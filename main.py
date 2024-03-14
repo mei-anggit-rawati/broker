@@ -78,13 +78,12 @@ def create_purchase_order(vendor_name, pif):
         'order_line': order_lines,
     }
 
-    # purchase_order_id = models.execute_kw(auth_values.db, auth_values.uid, auth_values.password,
-    #                                       'purchase.order', 'create', [purchase_order_vals])
+    purchase_order_id = models.execute_kw(auth_values.db, auth_values.uid, auth_values.password,'purchase.order', 'create', [purchase_order_vals])
 
-    # models.execute_kw(auth_values.db, auth_values.uid, auth_values.password, 'purchase.order', 'write', [[purchase_order_id], {'state': "purchase"}])
-    print(purchase_order_vals)
-    # print("Purchase Order created with ID:", purchase_order_id)
-
+    models.execute_kw(auth_values.db, auth_values.uid, auth_values.password, 'purchase.order', 'write', [[purchase_order_id], {'state': "purchase"}])
+    
+    print("Purchase Order created with ID:", purchase_order_id)
+print(order_lines)
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':

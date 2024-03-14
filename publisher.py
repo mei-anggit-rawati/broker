@@ -82,10 +82,11 @@ def create_purchase_order(vendor_name, pif):
         'date_planned': expected_arrival,
         'order_line': order_lines,
     }
-
+    # make a topic for broker
     topic = 'purchase_orders'
+    # prepare data  to send on the topic
     payload = json.dumps(purchase_order_vals)
-
+    # connect to broker and publish message
     publish.single(topic, payload, hostname='0ef562581d144a8da051382a90237387.s1.eu.hivemq.cloud', port=8883, auth=auth, tls=ssl_context, protocol=paho.MQTTv31)
 
 if __name__ == '__main__':
